@@ -1,0 +1,4 @@
+configs/default_numerical_only.py.pkl	6321	0.656714283634	0.611395370877
+configs/default_categorical_only.py.pkl	5451	0.579135168216	0.607908620448
+configs/mean_aggregate_only.py.pkl	4743	0.703366341099	0.66190548093
+configs/empty_test.py.pkl	21	0.513249437852	0.514610878117
