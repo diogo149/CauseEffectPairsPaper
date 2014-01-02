@@ -52,7 +52,7 @@ def write_score(filename):
     gbm = gbm_score(data)
     sgd = sgd_score(data)
 
-    results = "\t".join(map(str, [target, data.shape[1], gbm, sgd]))
+    results = "\t".join(map(str, [filename, data.shape[1], gbm, sgd]))
     print(results)
     with open(RESULTS_FILE, 'a') as outfile:
         outfile.write(results)
