@@ -8,5 +8,5 @@ from autocause.challenge import read_all
 # from boomlet import settings
 # settings.PARALLEL.PMAP = False
 
-pairs = read_all("sample")[0]
+pairs = read_all("final_train")[0]
 featurize_many(pairs, "configs")
