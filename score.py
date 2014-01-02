@@ -1,3 +1,5 @@
+#!/bin/env python
+
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.linear_model import SGDRegressor
 
@@ -40,4 +42,8 @@ if __name__ == "__main__":
     gbm = gbm_score(data)
     sgd = sgd_score(data)
 
-    print("\t".join(map(str, [target, data.shape[1], gbm, sgd])))
+    results = "\t".join(map(str, [target, data.shape[1], gbm, sgd]))
+    print(results)
+    with open("results.txt", 'a') as outfile:
+        outfile.write(results)
+        outfile.write('\n')
