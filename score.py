@@ -63,8 +63,11 @@ def write_scores():
     configs = os.listdir(CONFIGS_FOLDER)
     pickles = filter(lambda x: x.endswith(".py.pkl"), configs)
     pickle_paths = [os.path.join(CONFIGS_FOLDER, x) for x in pickles]
-    with open(RESULTS_FILE) as infile:
-        lines = infile.readlines()
+    try:
+        with open(RESULTS_FILE) as infile:
+            lines = infile.readlines()
+    except IOError:
+        lines = []
     old_paths = set([x.split('\t')[0] for x in lines])
     new_paths = filter(lambda x: x not in old_paths, pickle_paths)
     map(write_score, new_paths)
