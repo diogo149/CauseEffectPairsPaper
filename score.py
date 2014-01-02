@@ -34,8 +34,11 @@ def sgd_score(data):
 
 if __name__ == "__main__":
     import sys
-    y = joblib_load("y.pkl")
     target = sys.argv[1]
+    assert target.endswith(".py.pkl")
+    assert target.startswith("configs")
+
+    y = joblib_load("y.pkl")
     data = joblib_load(target)
     assert data.shape[0] == y.shape[0]
 
