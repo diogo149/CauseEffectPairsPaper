@@ -40,4 +40,4 @@ if __name__ == "__main__":
     gbm = gbm_score(data)
     sgd = sgd_score(data)
 
-    print("\t".join([target, data.shape[1], gbm, sgd]))
+    print("\t".join(map(str, [target, data.shape[1], gbm, sgd])))
