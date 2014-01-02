@@ -38,15 +38,15 @@ def sgd_score(data):
 
 
 def write_score(filename):
-    assert target.endswith(".py.pkl")
-    assert target.startswith(CONFIGS_FOLDER)
+    assert filename.endswith(".py.pkl")
+    assert filename.startswith(CONFIGS_FOLDER)
 
     # initializing global y
     global y
     if y is None:
         y = joblib_load("y.pkl")
 
-    data = joblib_load(target)
+    data = joblib_load(filename)
     assert data.shape[0] == y.shape[0]
 
     gbm = gbm_score(data)
