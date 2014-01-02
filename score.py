@@ -1,4 +1,6 @@
 #!/bin/env python
+import sys
+import os
 
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.linear_model import SGDRegressor
@@ -8,7 +10,10 @@ from boomlet.transform.preprocessing import PercentileScaler
 from autocause.challenge import target_score
 
 
+CONFIGS_FOLDER = 'configs'
+RESULTS_FILE = "results.txt"
 CV_PERCENT = 0.2
+y = None
 
 
 def score(data, clf):
@@ -32,13 +37,15 @@ def sgd_score(data):
     return score(PercentileScaler(squash=True).fit_transform(data), sgd)
 
 
-if __name__ == "__main__":
-    import sys
-    target = sys.argv[1]
+def write_score(filename):
     assert target.endswith(".py.pkl")
-    assert target.startswith("configs")
+    assert target.startswith(CONFIGS_FOLDER)
 
-    y = joblib_load("y.pkl")
+    # initializing global y
+    global y
+    if y is None:
+        y = joblib_load("y.pkl")
+
     data = joblib_load(target)
     assert data.shape[0] == y.shape[0]
 
@@ -47,6 +54,25 @@ if __name__ == "__main__":
 
     results = "\t".join(map(str, [target, data.shape[1], gbm, sgd]))
     print(results)
-    with open("results.txt", 'a') as outfile:
+    with open(RESULTS_FILE, 'a') as outfile:
         outfile.write(results)
         outfile.write('\n')
+
+
+def write_scores():
+    configs = os.listdir(CONFIGS_FOLDER)
+    pickles = filter(lambda x: x.endswith(".py.pkl"), configs)
+    pickle_paths = [os.path.join(CONFIGS_FOLDER, x) for x in pickles]
+    with open(RESULTS_FILE) as infile:
+        lines = infile.readlines()
+    old_paths = set([x.split('\t')[0] for x in lines])
+    new_paths = filter(lambda x: x not in old_paths, pickle_paths)
+    map(write_score, new_paths)
+
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        target = sys.argv[1]
+        write_score(target)
+    else:
+        write_scores()
