@@ -27,6 +27,7 @@ def score(data, clf):
     return target_score(y_valid, pred)
 
 def gbm_score(data):
+    # using gbm settings optimized for speed
     gbm = GradientBoostingRegressor(max_depth=2, max_features='sqrt', random_state=0)
     return score(data, gbm)
 
