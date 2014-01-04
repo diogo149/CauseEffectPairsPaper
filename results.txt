@@ -5,3 +5,7 @@ configs/default_no_meta.py.pkl	21186	0.713640109365	0.700135374168
 configs/autocause_default.py.pkl	21207	0.696014248897	0.694080271398
 configs/meta_only.py.pkl	21	0.513249437852	0.514610878117
 configs/old_features.py.pkl	8686	0.692483139268	0.663782901707
+configs/min_aggregate_only.py.pkl	4743	0.700988250898	0.660565019326
+configs/sum_aggregate_only.py.pkl	4743	0.701434552265	0.673035609828
+configs/max_aggregate_only.py.pkl	4743	0.691870225179	0.651876362553
+configs/relative_only.py.pkl	7062	0.699178700923	0.707910542983
