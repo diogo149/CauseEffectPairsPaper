@@ -31,7 +31,12 @@ WARNING: these will be used in various locations throughout the code base
 and will result in feature size growing at faster than a linear rate
 """
 AGGREGATORS = [
-    np.max
+    to_aggregator("max"),
+    # to_aggregator("min"),
+    # to_aggregator("median"),
+    # to_aggregator("mode"),
+    # to_aggregator("mean"),
+    # to_aggregator("sum"),
 ]
 
 """
