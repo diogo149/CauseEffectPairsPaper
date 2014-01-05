@@ -11,3 +11,7 @@ configs/max_aggregate_only.py.pkl	4743	0.691870225179	0.651876362553
 configs/relative_only.py.pkl	7062	0.699178700923	0.707910542983
 configs/a_to_b_only.py.pkl	7062	0.646039719086	0.619346087547
 configs/b_to_a_only.py.pkl	7062	0.675171907802	0.633300654009
+configs/no_aggregate.py.pkl	1077	0.676581730474	0.623828720773
+configs/median_aggregate_only.py.pkl	4743	0.691697784105	0.670042628328
+configs/mode_aggregate_only.py.pkl	4743	0.702727813568	0.664183581517
+configs/autocause_default_with_sum_aggregation.py.pkl	25773	0.709451429787	0.695304807716
