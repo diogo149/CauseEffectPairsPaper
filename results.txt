@@ -15,3 +15,11 @@ configs/no_aggregate.py.pkl	1077	0.676581730474	0.623828720773
 configs/median_aggregate_only.py.pkl	4743	0.691697784105	0.670042628328
 configs/mode_aggregate_only.py.pkl	4743	0.702727813568	0.664183581517
 configs/autocause_default_with_sum_aggregation.py.pkl	25773	0.709451429787	0.695304807716
+configs/only_fit.py.pkl	18612	0.693269150278	0.680996251976
+configs/categorical_kmeans10.py.pkl	5451	0.632243266485	0.622365613862
+configs/categorical_kmeans3.py.pkl	5451	0.614931332437	0.587218538488
+configs/numerical_pca1.py.pkl	921	0.66682459185	0.606938680493
+configs/no_fit.py.pkl	2574	0.687915176559	0.611305285221
+configs/numerical_mean_ordinal.py.pkl	921	0.651080073736	0.599028952216
+configs/categorical_kmeans_gap.py.pkl	5451	0.583693386727	0.582386249005
+configs/numerical_noop.py.pkl	921	0.671054122146	0.592442871034
