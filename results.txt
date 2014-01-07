@@ -23,3 +23,15 @@ configs/no_fit.py.pkl	2574	0.687915176559	0.611305285221
 configs/numerical_mean_ordinal.py.pkl	921	0.651080073736	0.599028952216
 configs/categorical_kmeans_gap.py.pkl	5451	0.583693386727	0.582386249005
 configs/numerical_noop.py.pkl	921	0.671054122146	0.592442871034
+configs/numerical_pca1_rf_only.py.pkl	261	0.643682857561	0.568762197986
+configs/categorical_kmeans10_nb_only.py.pkl	996	0.578082139243	0.59122957333
+configs/numerical_pca1_gbm_only.py.pkl	261	0.657848458945	0.596995045661
+configs/numerical_pca1_dt_only.py.pkl	261	0.618929711403	0.550528710645
+configs/categorical_kmeans10_gbm_only.py.pkl	996	0.633170335784	0.607150621346
+configs/numerical_pca1_knn_only.py.pkl	261	0.638331347172	0.577983408646
+configs/categorical_kmeans10_rf_only.py.pkl	996	0.646001448959	0.607517231438
+configs/categorical_kmeans10_knn_only.py.pkl	996	0.607753059361	0.572566617101
+configs/categorical_kmeans10_lr_only.py.pkl	996	0.620826820564	0.600463299695
+configs/numerical_pca1_ridge_only.py.pkl	261	0.62702149139	0.578773516607
+configs/categorical_kmeans10_dt_only.py.pkl	996	0.637150678151	0.61158719868
+configs/numerical_pca1_lr_only.py.pkl	261	0.624841890148	0.577198194394
