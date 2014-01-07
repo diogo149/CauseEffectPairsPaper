@@ -1,0 +1,68 @@
+* old vs new features
+| CONFIG FILE                      | NUM FEATURES |            GBM |   LINEAR MODEL |
+| configs/old_features.py.pkl      |         8686 | 0.692483139268 | 0.663782901707 |
+| configs/autocause_default.py.pkl |        21207 | 0.696014248897 | 0.694080271398 |
+-new features have slightly improved performance for a lot more features
+* metafeatures vs no metafeatures vs both
+| configs/autocause_default.py.pkl | 21207 | 0.696014248897 | 0.694080271398 |
+| configs/default_no_meta.py.pkl   | 21186 | 0.713640109365 | 0.700135374168 |
+| configs/meta_only.py.pkl         |    21 | 0.513249437852 | 0.514610878117 |
+- metafeatures actually hurt accuracy, which makes sense because the types of the variables shouldn't be important with respect to causality (at least not on their own, a smart enough classifier maybe be able to use them to learn a separate model for each scenario)
+* relative features
+| configs/default_no_meta.py.pkl | 21186 | 0.713640109365 | 0.700135374168 |
+| configs/relative_only.py.pkl   |  7062 | 0.699178700923 | 0.707910542983 |
+| configs/a_to_b_only.py.pkl     |  7062 | 0.646039719086 | 0.619346087547 |
+| configs/b_to_a_only.py.pkl     |  7062 | 0.675171907802 | 0.633300654009 |
+- relative only features seem to be almost as good as with all features
+- selecting relative only features would offer essentially no speed up for feature creation
+* aggregation
+| configs/autocause_default_with_sum_aggregation.py.pkl | 25773 | 0.709451429787 | 0.695304807716 |
+| configs/mean_aggregate_only.py.pkl                    |  4743 | 0.703366341099 |  0.66190548093 |
+| configs/mode_aggregate_only.py.pkl                    |  4743 | 0.702727813568 | 0.664183581517 |
+| configs/median_aggregate_only.py.pkl                  |  4743 | 0.691697784105 | 0.670042628328 |
+| configs/min_aggregate_only.py.pkl                     |  4743 | 0.700988250898 | 0.660565019326 |
+| configs/sum_aggregate_only.py.pkl                     |  4743 | 0.701434552265 | 0.673035609828 |
+| configs/max_aggregate_only.py.pkl                     |  4743 | 0.691870225179 | 0.651876362553 |
+| configs/no_aggregate.py.pkl                           |  1077 | 0.676581730474 | 0.623828720773 |
+- aggregation, quite surprisingly, works best with all together (I initially believed this wouldn't make a difference since the information is quite redundant)
+- sum aggregation worked quite well (best for a linear model), which wasn't used for the competition
+* fit vs no fit
+| configs/default_no_meta.py.pkl | 21186 | 0.713640109365 | 0.700135374168 |
+| configs/only_fit.py.pkl        | 18612 | 0.693269150278 | 0.680996251976 |
+| configs/no_fit.py.pkl          |  2574 | 0.687915176559 | 0.611305285221 |
+- no fit features get fairly good performance for few features
+- best together
+* numerical only vs categorical only vs both
+| configs/autocause_default.py.pkl        | 21207 | 0.696014248897 | 0.694080271398 |
+| configs/default_numerical_only.py.pkl   |  6321 | 0.656714283634 | 0.611395370877 |
+| configs/default_categorical_only.py.pkl |  5451 | 0.579135168216 | 0.607908620448 |
+- either one by themselves offers fairly bad performance
+* numerical->categorical conversion
+| configs/default_categorical_only.py.pkl | 5451 | 0.579135168216 | 0.607908620448 |
+| configs/categorical_kmeans10.py.pkl     | 5451 | 0.632243266485 | 0.622365613862 |
+| configs/categorical_kmeans3.py.pkl      | 5451 | 0.614931332437 | 0.587218538488 |
+| configs/categorical_kmeans_gap.py.pkl   | 5451 | 0.583693386727 | 0.582386249005 |
+- kmeans10 worked best, perhaps increasing the number of clusters would perform even better
+* categorical->numerical conversion
+| configs/default_numerical_only.py.pkl | 6321 | 0.656714283634 | 0.611395370877 |
+| configs/numerical_noop.py.pkl         |  921 | 0.671054122146 | 0.592442871034 |
+| configs/numerical_pca1.py.pkl         |  921 |  0.66682459185 | 0.606938680493 |
+| configs/numerical_mean_ordinal.py.pkl |  921 | 0.651080073736 | 0.599028952216 |
+- not performing a version worked surprisingly well
+- very close performance, I would choose pca1 (low number of features, and noop might rely on artefacts in the data)
+- perhaps a combination of these (as done in the challenge) would work better?
+- perhaps even stacking the columns together would help
+- perhaps a 2D pca would also perform better
+- it's possible that noop performs so well not because the features contain more information, but because they contain less (e.g. it's harder to overfit with only a few of discrete values)
+* categorical only classifiers
+| configs/categorical_kmeans10.py.pkl     | 5451 | 0.632243266485 | 0.622365613862 |
+* numerical only classifiers
+| configs/numerical_pca1.py.pkl         |  921 |  0.66682459185 | 0.606938680493 |
+* final recommendations
+-don't use metafeatures
+-use relative only features
+-use sum aggregation
+-use both numerical and categorical conversion
+-use kmeans to convert numerical->categorical
+-use pca down to 1D to convert categorial->numerical
+-use both fit and no fit features
