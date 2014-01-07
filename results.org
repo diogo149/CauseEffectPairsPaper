@@ -3,6 +3,10 @@
 | configs/old_features.py.pkl      |         8686 | 0.692483139268 | 0.663782901707 |
 | configs/autocause_default.py.pkl |        21207 | 0.696014248897 | 0.694080271398 |
 -new features have slightly improved performance for a lot more features
+-new features have the logic much cleaner, thus can reuse functions much easier
+-new features have slightly more feature functions
+-old features have 2 types of conversion
+-new features are computed faster (~5hrs vs ~8hrs in a test)
 * metafeatures vs no metafeatures vs both
 | configs/autocause_default.py.pkl | 21207 | 0.696014248897 | 0.694080271398 |
 | configs/default_no_meta.py.pkl   | 21186 | 0.713640109365 | 0.700135374168 |
