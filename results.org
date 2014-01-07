@@ -59,10 +59,29 @@
 - perhaps a 2D pca would also perform better
 - it's possible that noop performs so well not because the features contain more information, but because they contain less (e.g. it's harder to overfit with only a few of discrete values)
 * categorical only classifiers
-| configs/categorical_kmeans10.py.pkl     | 5451 | 0.632243266485 | 0.622365613862 |
+| configs/categorical_kmeans10.py.pkl          | 5451 | 0.632243266485 | 0.622365613862 |
+| configs/categorical_kmeans10_nb_only.py.pkl  |  996 | 0.578082139243 |  0.59122957333 |
+| configs/categorical_kmeans10_gbm_only.py.pkl |  996 | 0.633170335784 | 0.607150621346 |
+| configs/categorical_kmeans10_rf_only.py.pkl  |  996 | 0.646001448959 | 0.607517231438 |
+| configs/categorical_kmeans10_knn_only.py.pkl |  996 | 0.607753059361 | 0.572566617101 |
+| configs/categorical_kmeans10_lr_only.py.pkl  |  996 | 0.620826820564 | 0.600463299695 |
+| configs/categorical_kmeans10_dt_only.py.pkl  |  996 | 0.637150678151 |  0.61158719868 |
+-tree-based methods worked best; 1st: rf, 2nd: dt, 3rd: gbm
+-naive bayes features performed quite poorly
+-using a combination of classifiers actually harmed performance
+-perhaps only selecting the best classifiers would lead to improved performance
 * numerical only classifiers
-| configs/numerical_pca1.py.pkl         |  921 |  0.66682459185 | 0.606938680493 |
-* final recommendations
+| configs/numerical_pca1.py.pkl            | 921 |  0.66682459185 | 0.606938680493 |
+| configs/numerical_pca1_rf_only.py.pkl    | 261 | 0.643682857561 | 0.568762197986 |
+| configs/numerical_pca1_gbm_only.py.pkl   | 261 | 0.657848458945 | 0.596995045661 |
+| configs/numerical_pca1_dt_only.py.pkl    | 261 | 0.618929711403 | 0.550528710645 |
+| configs/numerical_pca1_knn_only.py.pkl   | 261 | 0.638331347172 | 0.577983408646 |
+| configs/numerical_pca1_ridge_only.py.pkl | 261 |  0.62702149139 | 0.578773516607 |
+| configs/numerical_pca1_lr_only.py.pkl    | 261 | 0.624841890148 | 0.577198194394 |
+-contrary to categorical only classifiers, decision trees performed worst among test classifiers
+-gbm performed best
+-using all together still had the best performance
+* final recommendations (for a mix of accuracy and low dimensionality)
 -don't use metafeatures
 -use relative only features
 -use sum aggregation
@@ -70,3 +89,5 @@
 -use kmeans to convert numerical->categorical
 -use pca down to 1D to convert categorial->numerical
 -use both fit and no fit features
+-use a random forest classfier for providing a fit on categorical variables
+-use a gradient boosted regressor for providing a fit on numerical variables
