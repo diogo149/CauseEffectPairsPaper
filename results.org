@@ -93,7 +93,11 @@
 -use both fit and no fit features
 -use a random forest classfier for providing a fit on categorical variables
 -use a gradient boosted regressor for providing a fit on numerical variables
-* trial 2: trying to focus on performance
+* trial 2: lower dimensionality than trial 1
+-use only fit features
+
+-rationale: both fit and no fit features were used in trial 1 because no fit features contributed to a small percentage of features; this is no longer the case for the features created with trial 1
+* trial 3: trying to focus on accuracy
 -don't use metafeatures
 -use symmetric (relative) and asymmetric (non-relative) features
 -use all aggregation including sum
@@ -101,3 +105,4 @@
 -both categorical and numerical
 -kmeans with k = 10 for numerical->categorical
 -pca1 for categorical->numerical
+-TODO figure out which classifiers to use
