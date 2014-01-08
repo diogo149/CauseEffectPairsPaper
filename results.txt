@@ -36,3 +36,6 @@ configs/numerical_pca1_ridge_only.py.pkl	261	0.62702149139	0.578773516607
 configs/categorical_kmeans10_dt_only.py.pkl	996	0.637150678151	0.61158719868
 configs/numerical_pca1_lr_only.py.pkl	261	0.624841890148	0.577198194394
 configs/trial1.py.pkl	324	0.682581676518	0.687203189251
+configs/trial2.py.pkl	250	0.660872759264	0.676585117563
+configs/categorical_kmeans10_none.py.pkl	105	0.581141154559	0.572462173005
+configs/numerical_pca1_none.py.pkl	129	0.619709098921	0.540686641005
