@@ -2,6 +2,8 @@
 | CONFIG FILE                      | NUM FEATURES |            GBM |   LINEAR MODEL |
 | configs/old_features.py.pkl      |         8686 | 0.692483139268 | 0.663782901707 |
 | configs/autocause_default.py.pkl |        21207 | 0.696014248897 | 0.694080271398 |
+| configs/trial1.py.pkl            |          324 | 0.682581676518 | 0.687203189251 |
+
 -new features have slightly improved performance for a lot more features
 -new features have the logic much cleaner, thus can reuse functions much easier
 -new features have slightly more feature functions
@@ -81,13 +83,21 @@
 -contrary to categorical only classifiers, decision trees performed worst among test classifiers
 -gbm performed best
 -using all together still had the best performance
-* final recommendations (for a mix of accuracy and low dimensionality)
+* trial 1: combining insights for a mix of low dimensionality and performance
 -don't use metafeatures
 -use relative only features
 -use sum aggregation
 -use both numerical and categorical conversion
--use kmeans to convert numerical->categorical
+-use kmeans with k = 10 to convert numerical->categorical
 -use pca down to 1D to convert categorial->numerical
 -use both fit and no fit features
 -use a random forest classfier for providing a fit on categorical variables
 -use a gradient boosted regressor for providing a fit on numerical variables
+* trial 2: trying to focus on performance
+-don't use metafeatures
+-use symmetric (relative) and asymmetric (non-relative) features
+-use all aggregation including sum
+-use both fit and no fit
+-both categorical and numerical
+-kmeans with k = 10 for numerical->categorical
+-pca1 for categorical->numerical
