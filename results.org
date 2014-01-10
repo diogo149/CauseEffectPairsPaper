@@ -109,5 +109,5 @@
 -both categorical and numerical
 -kmeans with k = 10 for numerical->categorical
 -pca1 for categorical->numerical
--classifers for categorical: rf, dt, gbm, lr
--classifiers for numerical: gbm, rf, knn, ridge, lr
+-all classifiers
+-all regressors

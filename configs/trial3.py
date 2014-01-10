@@ -146,7 +146,7 @@ Estimators used to provide a fit for a variable
 REGRESSION_ESTIMATORS = [
     Ridge(),
     LinearRegression(),
-    # DecisionTreeRegressor(random_state=0),
+    DecisionTreeRegressor(random_state=0),
     RandomForestRegressor(random_state=0),
     GradientBoostingRegressor(subsample=0.5, n_estimators=10, random_state=0),
     KNeighborsRegressor(),
@@ -156,8 +156,8 @@ CLASSIFICATION_ESTIMATORS = [
     DecisionTreeClassifier(random_state=0),
     RandomForestClassifier(random_state=0),
     GradientBoostingClassifier(subsample=0.5, n_estimators=10, random_state=0),
-    # KNeighborsClassifier(),
-    # GaussianNB(),
+    KNeighborsClassifier(),
+    GaussianNB(),
 ]
 
 """
