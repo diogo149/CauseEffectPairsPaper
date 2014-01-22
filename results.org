@@ -4,7 +4,7 @@
 | configs/autocause_default.py.pkl |        21207 | 0.696014248897 | 0.694080271398 |
 | configs/trial1.py.pkl            |          324 | 0.682581676518 | 0.687203189251 |
 | configs/trial2.py.pkl            |          250 | 0.660872759264 | 0.676585117563 |
-
+| configs/trial3.py.pkl            |        14442 | 0.676321066209 | 0.681059838814 |
 -new features have slightly improved performance for a lot more features
 -new features have the logic much cleaner, thus can reuse functions much easier
 -new features have slightly more feature functions
